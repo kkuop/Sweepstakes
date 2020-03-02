@@ -6,7 +6,19 @@ using System.Threading.Tasks;
 
 namespace SweepstakesProject
 {
-    class MarketingFirm
+    public class MarketingFirm
     {
+        //member vars
+        ISweepstakesManager _manager;
+        //constructor
+        public MarketingFirm(ISweepstakesManager manager)
+        {
+            _manager = manager;
+        }
+        //member methods
+        public void CreateSweepstake()
+        {
+
+        }
     }
 }
