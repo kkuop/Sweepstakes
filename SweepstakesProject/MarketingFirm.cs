@@ -20,10 +20,10 @@ namespace SweepstakesProject
         {
             //What is the name of the sweepstakes?
             //Read user input
-            string userInput = UserInterface.GetUserInputFor("What is the name of the sweepstakes?");
+            string nameOfSweeps = UserInterface.GetUserInputFor("What is the name of the sweepstakes?");
 
             //Register the contestants
-            Sweepstakes sweepstakes = new Sweepstakes(userInput);
+            Sweepstakes sweepstakes = new Sweepstakes(nameOfSweeps);
             sweepstakes.RegisterContestant(new Contestant("Kyle", "Kuopus", "kkuopus@live.com", idIncrementer++));
             sweepstakes.RegisterContestant(new Contestant("Johnny", "Cash", "jcash@gmail.com", idIncrementer++));
             sweepstakes.RegisterContestant(new Contestant("Robert", "California", "r.california@yahoo.com", idIncrementer++));
@@ -32,9 +32,13 @@ namespace SweepstakesProject
             
 
 
-            //Decide stack or queue
+
             //Pick winner
             //Observable pattern to notify
+        }
+        public void PickAWinner()
+        {
+            //Which sweepstakes?
         }
     }
 }

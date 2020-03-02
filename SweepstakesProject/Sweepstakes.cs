@@ -17,10 +17,17 @@ namespace SweepstakesProject
         {
             Name = name;
         }
+        public Sweepstakes(string name, string type)
+        {
+            Name = name;
+            if(type == "stack")
+            {
+                
+            }
+        }
         //member methods
         public void RegisterContestant(Contestant contestant)
         {
-            //build the stack or queue here
         }
         public Contestant PickWinner()
         {
