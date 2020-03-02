@@ -18,7 +18,13 @@ namespace SweepstakesProject
         //member methods
         public void CreateMarketingFirmWithManager()
         {
-
+            MarketingFirm marketingFirm = new MarketingFirm();
+            marketingFirm.CreateSweepstake();
+            //What is the name of the sweepstakes?
+            //Register the contestants
+            //Decide stack or queue
+            //Pick winner
+            //Observable pattern to notify
         }
     }
 }
