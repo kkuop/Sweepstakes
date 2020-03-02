@@ -15,11 +15,11 @@ namespace SweepstakesProject
         //constructor
         public SweepstakesQueueManager()
         {
-
+            queue = new Queue<Sweepstakes>();
         }
         
         //member methods
-        public void InsertSweepstakes()
+        public void InsertSweepstakes(Sweepstakes sweepstakes)
         {
 
         }

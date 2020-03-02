@@ -16,22 +16,20 @@ namespace SweepstakesProject
         public Sweepstakes(string name)
         {
             Name = name;
+            contestants = new Dictionary<int, Contestant>();
         }
-        public Sweepstakes(string name, string type)
-        {
-            Name = name;
-            if(type == "stack")
-            {
-                
-            }
-        }
+
         //member methods
         public void RegisterContestant(Contestant contestant)
         {
+            //add to dictionary
+            contestants.Add(contestant.RegistrationNumber, contestant);
         }
         public Contestant PickWinner()
         {
-            return new Contestant("test", "contestant", "test@gmail.com", 1);
+            int rng = new Random().Next(1, contestants.Count);
+            Contestant winner = contestants[rng];
+            return winner;
         }
         public void PrintContestantInfo(Contestant contestant)
         {
