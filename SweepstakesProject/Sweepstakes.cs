@@ -20,7 +20,7 @@ namespace SweepstakesProject
         //member methods
         public void RegisterContestant(Contestant contestant)
         {
-
+            //build the stack or queue here
         }
         public Contestant PickWinner()
         {
