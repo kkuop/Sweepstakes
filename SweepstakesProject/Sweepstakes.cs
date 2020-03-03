@@ -61,6 +61,35 @@ namespace SweepstakesProject
                 client.Disconnect(true);
             }
         }
+        public void SendEmailToLosers()
+        {
+            for (int i = 0; i < contestants.Count; i++)
+            {
+                if (contestants.ElementAt(i).Value.isWinner == false)
+                {
+                    var message = new MimeMessage();
+                    message.From.Add(new MailboxAddress("devCodeCampMailKit@gmail.com"));
+                    message.To.Add(new MailboxAddress($"{contestants.ElementAt(i).Value.EmailAddress}"));
+                    message.Subject = $"You did not win the {Name} sweepstakes :( ";
+                    message.Body = new TextPart("plain")
+                    {
+                        Text = $"Hello {contestants.ElementAt(i).Value.FirstName}," +
+                        $"Unfortunately, you did not win the {Name} sweepstakes. Please try again next time. "
+                    };
+                    using (var client = new SmtpClient())
+                    {
+                        client.ServerCertificateValidationCallback = (s, c, h, e) => true;
+
+                        client.Connect("smtp.gmail.com", 587, false);
+
+                        client.Authenticate("devCodeCampMailKit", "");
+
+                        client.Send(message);
+                        client.Disconnect(true);
+                    }
+                }                
+            }
+        }
         public bool CheckIfContestantsIsEmpty()
         {
             if(contestants.Count<1)

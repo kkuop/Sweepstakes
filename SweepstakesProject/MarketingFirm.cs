@@ -83,6 +83,7 @@ namespace SweepstakesProject
             //Notify all contestants of their win/loss
             //Integrate the mailAPI
             activeSweep.SendEmailToWinner(sweepWinner);
+            activeSweep.SendEmailToLosers();
             activeSweep = null;            
         }
         public void RegisterAContestant(Random rng)
