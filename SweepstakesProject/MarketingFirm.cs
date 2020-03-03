@@ -11,14 +11,13 @@ namespace SweepstakesProject
         //member vars
         ISweepstakesManager _manager;
         int idIncrementer;
-        SweepstakesStackManager stack = new SweepstakesStackManager();
-        SweepstakesQueueManager queue = new SweepstakesQueueManager();
         List<Sweepstakes> listOfSweeps = new List<Sweepstakes>();
         Sweepstakes activeSweep;
         Contestant sweepWinner;
         //constructor
-        public MarketingFirm()
+        public MarketingFirm( ISweepstakesManager _manager)
         {
+            this._manager = _manager;
         }
         //member methods
         public void CreateSweepstake()
@@ -27,8 +26,8 @@ namespace SweepstakesProject
             //Read user input
             string nameOfSweeps = UserInterface.GetUserInputFor("What is the name of the sweepstakes?");
             Sweepstakes sweepstakes = new Sweepstakes(nameOfSweeps);
-            //Add the sweepstakes to the Stack, Queue, and List
-            stack.InsertSweepstakes(sweepstakes);
+            //Add the sweepstakes to the Stack, Queue, or List
+            _manager.InsertSweepstakes(sweepstakes);            
             listOfSweeps.Add(sweepstakes);
         }
         public void PickAWinner(Random rng)

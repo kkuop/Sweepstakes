@@ -27,12 +27,5 @@ namespace SweepstakesProject
             Sweepstakes sweepstakes = new Sweepstakes("Red Bull Sweeps");
             return sweepstakes;
         }
-        //public void DisplayAllSweeps()
-        //{
-        //    for (int i = 0; i < stack.Count; i++)
-        //    {
-        //        UserInterface.DisplaySweep();
-        //    }
-        //}
     }
 }

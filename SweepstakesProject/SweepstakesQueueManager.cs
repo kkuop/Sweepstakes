@@ -21,7 +21,7 @@ namespace SweepstakesProject
         //member methods
         public void InsertSweepstakes(Sweepstakes sweepstakes)
         {
-
+            queue.Enqueue(sweepstakes);
         }
         public Sweepstakes GetSweepstakes()
         {

@@ -9,6 +9,8 @@ namespace SweepstakesProject
     public class Simulation
     {
         //member vars
+        SweepstakesStackManager stack = new SweepstakesStackManager();
+        SweepstakesQueueManager queue = new SweepstakesQueueManager();
         MarketingFirm marketingFirm;
         Random rng;
         //constructor
@@ -40,8 +42,20 @@ namespace SweepstakesProject
         }
         public void CreateMarketingFirmWithManager()
         {
-            marketingFirm = new MarketingFirm();            
+            string userInput = "a";
+            //get user input to determine the stack or queue
+            while (userInput!="s"&&userInput!="q")
+            {
+                userInput = UserInterface.GetUserInputFor("Would you like to use the s)tack or q)ueue data structure?");
+                if (userInput == "s")
+                {
+                    marketingFirm = new MarketingFirm(stack);
+                }
+                else if (userInput == "q")
+                {
+                    marketingFirm = new MarketingFirm(queue);
+                }
+            }
         }
-
     }
 }
