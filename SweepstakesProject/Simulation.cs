@@ -10,10 +10,11 @@ namespace SweepstakesProject
     {
         //member vars
         MarketingFirm marketingFirm;
+        Random rng;
         //constructor
         public Simulation()
         {
-
+            rng = new Random();
         }
         //member methods
         public void RunSimulation()
@@ -29,7 +30,7 @@ namespace SweepstakesProject
                 }
                 if (Comparer<string>.Default.Compare(userInput, "b") == 0)
                 {
-                    marketingFirm.PickAWinner();
+                    marketingFirm.PickAWinner(rng);
                 }
                 if (Comparer<string>.Default.Compare(userInput, "c") == 0)
                 {

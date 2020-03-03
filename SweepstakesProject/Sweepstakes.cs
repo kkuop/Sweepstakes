@@ -10,7 +10,6 @@ namespace SweepstakesProject
     {
         //member vars
         private Dictionary<int, Contestant> contestants;
-        private string name;
         public string Name { get; set; }
         //constructor
         public Sweepstakes(string name)
@@ -25,15 +24,25 @@ namespace SweepstakesProject
             //add to dictionary
             contestants.Add(contestant.RegistrationNumber, contestant);
         }
-        public Contestant PickWinner()
+        public Contestant PickWinner(Random rng)
         {
-            int rng = new Random().Next(1, contestants.Count);
-            Contestant winner = contestants[rng];
-            return winner;
+                Contestant winner = contestants[rng.Next(0, contestants.Count)];
+                return winner;
         }
         public void PrintContestantInfo(Contestant contestant)
         {
-
+            UserInterface.DisplayWinner(contestant);
+        }
+        public bool CheckIfContestantsIsEmpty()
+        {
+            if(contestants.Count<1)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }
