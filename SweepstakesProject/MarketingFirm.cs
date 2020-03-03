@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MailKit;
+using MimeKit;
+using MailKit.Net.Smtp;
 
 namespace SweepstakesProject
 {
@@ -79,6 +82,7 @@ namespace SweepstakesProject
             activeSweep.PrintContestantInfo(sweepWinner);
             //Notify all contestants of their win/loss
             //Integrate the mailAPI
+            activeSweep.SendEmailToWinner(sweepWinner);
             activeSweep = null;            
         }
         public void RegisterAContestant(Random rng)

@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MailKit.Net.Smtp;
+using MailKit;
+using MimeKit;
 
 namespace SweepstakesProject
 {
@@ -34,6 +37,29 @@ namespace SweepstakesProject
         public void PrintContestantInfo(Contestant contestant)
         {
             UserInterface.DisplayWinner(contestant);
+        }
+        public void SendEmailToWinner(Contestant contestant)
+        {
+            var message = new MimeMessage();
+            message.From.Add(new MailboxAddress("devCodeCampMailKit@gmail.com"));
+            message.To.Add(new MailboxAddress("kkuopus@live.com"));
+            message.Subject = $"You are a winner of the {Name} sweepstakes!";
+            message.Body = new TextPart("plain")
+            {
+                Text = $"Hello {contestant.FirstName}," +
+                $"You have won the {Name} sweepstakes! Please reply to this email to claim your winnings. "
+            };
+            using (var client = new SmtpClient())
+            {
+                client.ServerCertificateValidationCallback = (s, c, h, e) => true;
+
+                client.Connect("smtp.gmail.com", 587, false);
+
+                client.Authenticate("devCodeCampMailKit", "");
+
+                client.Send(message);
+                client.Disconnect(true);
+            }
         }
         public bool CheckIfContestantsIsEmpty()
         {
