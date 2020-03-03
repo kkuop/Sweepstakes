@@ -22,10 +22,16 @@ namespace SweepstakesProject
         {
             stack.Push(sweepstakes);
         }
-        public Sweepstakes GetSweepstakes()
+        public Sweepstakes GetSweepstakes(string userInput)
         {
-            Sweepstakes sweepstakes = new Sweepstakes("Red Bull Sweeps");
-            return sweepstakes;
+            for (int i = 0; i < stack.Count; i++)
+            {
+                if(stack.ElementAt(i).Name == userInput)
+                {
+                    return stack.ElementAt(i);
+                }
+            }
+            return null;
         }
     }
 }

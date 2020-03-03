@@ -37,16 +37,16 @@ namespace SweepstakesProject
                 return;
             }
             //Which sweepstakes?
-            string userInput;
             UserInterface.DisplaySweeps(listOfSweeps);
-            userInput = UserInterface.GetUserInputFor("Which sweepstakes would you like to pick a winner for?\n\nType 'cancel' to cancel...");
+            string userInput = UserInterface.GetUserInputFor("Which sweepstakes would you like to pick a winner for?\n\nType 'cancel' to cancel...");
             while (activeSweep == null && userInput != "cancel")
             {
                 for (int i = 0; i < listOfSweeps.Count; i++)
                 {
                     if (listOfSweeps[i].Name == userInput)
                     {
-                        activeSweep = listOfSweeps[i];
+                        //activeSweep = listOfSweeps[i];
+                        activeSweep = _manager.GetSweepstakes(userInput);
                     }
                 }
                 if (activeSweep == null)

@@ -23,10 +23,16 @@ namespace SweepstakesProject
         {
             queue.Enqueue(sweepstakes);
         }
-        public Sweepstakes GetSweepstakes()
+        public Sweepstakes GetSweepstakes(string userInput)
         {
-            Sweepstakes sweepstakes = new Sweepstakes("Mountain Dew Sweepstakes");
-            return sweepstakes;
+            for (int i = 0; i < queue.Count; i++)
+            {
+                if (queue.ElementAt(i).Name == userInput)
+                {
+                    return queue.ElementAt(i);
+                }
+            }
+            return null;
         }
     }
 }
