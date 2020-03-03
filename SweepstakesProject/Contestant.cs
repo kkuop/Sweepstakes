@@ -14,6 +14,7 @@ namespace SweepstakesProject
         public string LastName { get; set; }
         public string EmailAddress { get; set; }
         public int RegistrationNumber { get; set; }
+        public bool isWinner;
 
         //constructor
         public Contestant(string firstName, string lastName, string emailAddress, int registrationNumber)
@@ -22,6 +23,7 @@ namespace SweepstakesProject
             LastName = lastName;
             EmailAddress = emailAddress;
             RegistrationNumber = registrationNumber;
+            isWinner = false;
         }
 
         //member methods

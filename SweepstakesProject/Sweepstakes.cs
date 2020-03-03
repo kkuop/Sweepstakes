@@ -27,6 +27,8 @@ namespace SweepstakesProject
         public Contestant PickWinner(Random rng)
         {
                 Contestant winner = contestants[rng.Next(0, contestants.Count)];
+            //Observer design patter to notify all other contestants of their loss
+            winner.isWinner = true;
                 return winner;
         }
         public void PrintContestantInfo(Contestant contestant)

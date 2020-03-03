@@ -41,8 +41,7 @@ namespace SweepstakesProject
         }
         public static void DisplayWinner(Contestant contestant)
         {
-            Console.WriteLine($"The winner of the sweepstakes is: {contestant.FirstName} {contestant.LastName}!\n\n{contestant.EmailAddress}");
-
+            Console.WriteLine($"The winner of the sweepstakes is: {contestant.FirstName} {contestant.LastName}!\n\n{contestant.EmailAddress}\n\n");
         }
     }
 }

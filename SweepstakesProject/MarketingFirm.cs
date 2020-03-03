@@ -11,13 +11,16 @@ namespace SweepstakesProject
         //member vars
         ISweepstakesManager _manager;
         int idIncrementer;
-        List<Sweepstakes> listOfSweeps = new List<Sweepstakes>();
+        List<Sweepstakes> listOfSweeps;
         Sweepstakes activeSweep;
         Contestant sweepWinner;
+        int Count { get; set; }
         //constructor
         public MarketingFirm( ISweepstakesManager _manager)
         {
             this._manager = _manager;
+            Count = 0;
+            listOfSweeps = new List<Sweepstakes>();
         }
         //member methods
         public void CreateSweepstake()
@@ -29,6 +32,7 @@ namespace SweepstakesProject
             //Add the sweepstakes to the Stack, Queue, or List
             _manager.InsertSweepstakes(sweepstakes);            
             listOfSweeps.Add(sweepstakes);
+            Count++;
         }
         public void PickAWinner(Random rng)
         {
@@ -73,9 +77,11 @@ namespace SweepstakesProject
                 return;
             }
             activeSweep.PrintContestantInfo(sweepWinner);
+            //Notify all contestants of their win/loss
+            //Integrate the mailAPI
             activeSweep = null;            
         }
-        public void RegisterAContestant()
+        public void RegisterAContestant(Random rng)
         {
             if (listOfSweeps.Count < 1)
             {
@@ -119,20 +125,21 @@ namespace SweepstakesProject
                 }
                 if (Comparer<string>.Default.Compare(userInput, "b") == 0)
                 {
-                    RegisterRandomContestants();
+                    RegisterRandomContestants(rng);
                 }
             } while (Comparer<string>.Default.Compare(userInput, "c") != 0);
             activeSweep = null;
         }
-        public void RegisterRandomContestants()
+        public void RegisterRandomContestants(Random rng)
         {
-            //Register the contestants
-
-            activeSweep.RegisterContestant(new Contestant("Kyle", "Kuopus", "kkuopus@live.com", idIncrementer++));
-            activeSweep.RegisterContestant(new Contestant("Johnny", "Cash", "jcash@gmail.com", idIncrementer++));
-            activeSweep.RegisterContestant(new Contestant("Robert", "California", "r.california@yahoo.com", idIncrementer++));
-            activeSweep.RegisterContestant(new Contestant("Michael", "Scott", "bestbossever@michaelscottpapercompany.com", idIncrementer++));
-            activeSweep.RegisterContestant(new Contestant("Holly", "Flax", "hollyflax@gmail.com", idIncrementer++));
+            List<string> listOfNames = new List<string> { "Beckie", "Casimira", "Myesha", "Monika", "Una", "Cesar", "Renae", "Aleisha", "Randy", "Jordon", "Geraldo", "Normand", "Marilu", "Madeline", "Francesco", "Hulda", "Carolyn", "Marline", "Anderson", "Marquitta", "Lupita", "Louella", "Lottie", "Alfonzo", "Yanira", "Rona", "Newton", "Latina", "Vicente", "Migdalia", "Winfred", "Somer", "Raphael", "Shakira", "Ghislaine", "Fiona", "Deanna", "Eldora", "Cinda", "Desmond", "Mistie", "Lashaun", "Dusty", "Tanja", "Christinia", "Rhea", "Marg", "Ashanti", "Filiberto", "Harley" };
+            //Register the random contestants
+            for (int i = 0; i < 50; i++)
+            {
+                string firstName = listOfNames[rng.Next(0, 26)];
+                string lastName = listOfNames[rng.Next(26, 50)];
+                activeSweep.RegisterContestant(new Contestant(firstName, lastName, ""+firstName+"."+lastName+"@gmail.com", idIncrementer++));
+            }
         }
     }
 }

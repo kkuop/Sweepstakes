@@ -36,7 +36,7 @@ namespace SweepstakesProject
                 }
                 if (Comparer<string>.Default.Compare(userInput, "c") == 0)
                 {
-                    marketingFirm.RegisterAContestant();
+                    marketingFirm.RegisterAContestant(rng);
                 }
             } while (Comparer<string>.Default.Compare(userInput, "d") != 0);                        
         }
